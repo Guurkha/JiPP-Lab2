@@ -1,22 +1,21 @@
 #include <iostream>
-#include <utility>
 
 using namespace std;
 
-template <class T, size_t N>
-void swap(T& a, T& b)
+template <class T>
+void swap3(T& a, T& b)
 {
-  T temp = 0;
-  temp = a;
-  a = b;
-  b = temp; 
-} 
+    T 
+    c(std::move(a)); 
+    a=std::move(b); 
+    b=std::move(c);
+}
 
 template <class T, size_t N>
 void swap2(T (&a)[N], T (&b)[N])
 {
   for (size_t i = 0; i<N; ++i) 
-    swap(a[i], b[i]);
+    swap3(a[i], b[i]);
 }
 
 
