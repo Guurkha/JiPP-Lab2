@@ -6,9 +6,9 @@ template <class T>
 void swap3(T& a, T& b)
 {
     T 
-    c(std::move(a)); 
-    a=std::move(b); 
-    b=std::move(c);
+    c(move(a)); 
+    a=move(b); 
+    b=move(c);
 }
 
 template <class T, size_t N>
