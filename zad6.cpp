@@ -2,7 +2,7 @@
 
 using namespace std;
 
-template <class T>
+/*template <class T>
 void swap3(T& a, T& b)
 {
     T 
@@ -17,8 +17,18 @@ void swap2(T (&a)[N], T (&b)[N])
   for (size_t i = 0; i<N; ++i) 
     swap3(a[i], b[i]);
 }
-
-
+*/
+template <class T> void swap2 (T& a, T& b)
+{
+  T c(move(a)); 
+  a=move(b); 
+  b=move(c);
+}
+template <class T, size_t N> void swap2 (T (&a)[N], T (&b)[N])
+{
+  for (size_t i = 0; i<N; ++i) 
+    swap2 (a[i],b[i]);
+}
 int main()
 {
     float tab1[3] = {1, 2 ,3};
