@@ -18,13 +18,15 @@ void swap2(T (&a)[N], T (&b)[N])
     swap3(a[i], b[i]);
 }
 */
-template <class T> void swap2 (T& a, T& b)
+template <class T> 
+void swap2 (T& a, T& b)
 {
   T c(move(a)); 
   a=move(b); 
   b=move(c);
 }
-template <class T, size_t N> void swap2 (T (&a)[N], T (&b)[N])
+template <class T, size_t N> 
+void swap2 (T (&a)[N], T (&b)[N])
 {
   for (size_t i = 0; i<N; ++i) 
     swap2 (a[i],b[i]);
