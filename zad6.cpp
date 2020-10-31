@@ -1,34 +1,54 @@
 #include <iostream>
+#include <utility>
 
 using namespace std;
 
-void zamiana(int &first, int &second)
+template <class T, size_t N>
+void swap(T& a, T& b)
 {
-    int temp;
-    temp = first;
-    first = second;
-    second = temp;
-    
+  T temp = 0;
+  temp = a;
+  a = b;
+  b = temp; 
+} 
+
+template <class T, size_t N>
+void swap2(T (&a)[N], T (&b)[N])
+{
+  for (size_t i = 0; i<N; ++i) 
+    swap(a[i], b[i]);
 }
 
-void zamiana(float &first, float &second)
-{
-    float temp;
-    temp = first;
-    first = second;
-    second = temp;
-    
-}
+
 int main()
 {
-    int a = 34;
-    int b = 50;
+    float tab1[3] = {1, 2 ,3};
+    float tab2[3] = {5, 6, 7};
+    cout << endl << endl;
+    for(int i = 0; i < 3; i++)
+    {
+        cout << " " << tab1[i] << " ";
+    }
+    cout << endl << endl;
 
-    cout << "przed wywolaniem funkcji ' a ' = " << a << " ' b ' = " << b << endl;
-    
-    zamiana(a, b);
+    for(int i = 0; i < 3; i++)
+    {
+        cout << " " << tab2[i] << " ";
+    }
 
-    cout << "po wywolaniu funkcji: ' a ' " << a << " 'b' = " << b << endl;
+    swap2(tab1, tab2);
+    cout << endl << endl;
+
+    for(int i = 0; i < 3; i++)
+    {
+        cout << " " << tab1[i] << " ";
+    }
+
+    cout << endl << endl;
+    for(int i = 0; i < 3; i++)
+    {
+        cout << " " << tab2[i] << " ";
+    }
 
     return 0;
 
